@@ -71,7 +71,7 @@ show full processlist;
 ```
 ---
 
-####　create文出力
+#### create文出力
 dumpとるまでもないとき
 ```
 show create database db\G
@@ -85,3 +85,14 @@ show full columns from table_name;
 ```
 ---
 
+#### ポートフォワーディングして別サーバのmysql接続
+```
+ssh -f -N -L 60500:db_hostname:3306 -i ~/.ssh/id_rsa username@remote_hostname
+mysql -h 127.0.0.1 -P 60500
+```
+使い終わったらプロセスはkillしておく。
+```
+ps auxf | grep ssh
+kill XXX
+```
+---
