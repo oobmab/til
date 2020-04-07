@@ -96,3 +96,12 @@ ps auxf | grep ssh
 kill XXX
 ```
 ---
+
+#### blob型からデータを取り出して中身確認するときのコマンド
+- N: カラム名を出力しない  
+- s: セパレータをタブに置換して出力
+```
+mysql -Ns -e 'select hex(column_name) from table_name;' | fold -w60 | xxd -r -ps -c 30 > file_name.zip
+zcat file_name.zip | head -n 10
+```
+---
