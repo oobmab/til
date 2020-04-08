@@ -105,3 +105,22 @@ mysql -Ns -e 'select hex(column_name) from table_name;' | fold -w60 | xxd -r -ps
 zcat file_name.zip | head -n 10
 ```
 ---
+
+#### concat=パイプ(|) にする
+```
+# sql_modeの確認
+SELECT @@GLOBAL.sql_mode;
+
+SET GLOBAL sql_mode = 'PIPES_AS_CONCAT';
+
+# SELECT CONCAT('ABC','DEF');
+SELECT 'ABC' || 'DEF' ;
+```
+---
+
+#### コマンド履歴検索
+reverse-i-search
+```
+CTRL+R
+```
+---
